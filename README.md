@@ -1,4 +1,4 @@
-# imagemin-webp [![Build Status](https://travis-ci.org/imagemin/imagemin-webp.svg?branch=master)](https://travis-ci.org/imagemin/imagemin-webp)
+# imagemin-webp [![Build Status](http://img.shields.io/travis/imagemin/imagemin-webp.svg?style=flat)](https://travis-ci.org/imagemin/imagemin-webp)
 
 > webp image-min plugin
 
