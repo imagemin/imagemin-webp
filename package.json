@@ -1,7 +1,7 @@
 {
   "name": "imagemin-webp",
   "version": "1.0.1",
-  "description": "webp image-min plugin",
+  "description": "webp imagemin plugin",
   "license": "MIT",
   "repository": "imagemin/imagemin-webp",
   "author": {

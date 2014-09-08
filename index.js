@@ -5,7 +5,7 @@ var imageType = require('image-type');
 var webp = require('cwebp-bin').path;
 
 /**
- * webp image-min plugin
+ * webp imagemin plugin
  *
  * @param {Object} opts
  * @api public
