@@ -33,10 +33,13 @@
   "dependencies": {
     "cwebp-bin": "^1.0.0",
     "exec-buffer": "^1.0.0",
-    "image-type": "^1.0.0"
+    "image-type": "^1.0.0",
+    "through2": "^0.6.1"
   },
   "devDependencies": {
     "ava": "^0.0.4",
-    "imagemin": "^1.0.3"
+    "imagemin": "^1.0.3",
+    "is-webp": "^1.0.0",
+    "vinyl": "^0.4.3"
   }
 }

@@ -13,15 +13,34 @@ $ npm install --save imagemin-webp
 ## Usage
 
 ```js
-var Imagemin = require('image-min');
+var Imagemin = require('imagemin');
 var webp = require('imagemin-webp');
 
 var imagemin = new Imagemin()
-	.src('foo.png')
-	.dest('foo-optimized.webp')
+	.src('images/*.{jpg,png}')
+	.dest('build/images')
 	.use(webp());
 
-imagemin.optimize();
+imagemin.run(function (err, files) {
+	if (err) {
+		throw err;
+	}
+
+	console.log('Files optimized successfully!'); 
+});
+```
+
+You can also use this plugin with [gulp](http://gulpjs.com):
+
+```js
+var gulp = require('gulp');
+var webp = require('imagemin-webp');
+
+gulp.task('default', function () {
+	return gulp.src('images/*.{jpg,png}')
+		.pipe(webp())
+		.pipe(gulp.dest('build/images'));
+});
 ```
 
 

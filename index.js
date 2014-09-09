@@ -2,6 +2,7 @@
 
 var ExecBuffer = require('exec-buffer');
 var imageType = require('image-type');
+var through = require('through2');
 var webp = require('cwebp-bin').path;
 
 /**
@@ -14,9 +15,19 @@ var webp = require('cwebp-bin').path;
 module.exports = function (opts) {
 	opts = opts || {};
 
-	return function (file, imagemin, cb) {
+	return through.obj(function (file, enc, cb) {
+		if (file.isNull()) {
+			cb(null, file);
+			return;
+		}
+
+		if (file.isStream()) {
+			cb(new Error('Streaming is not supported'));
+			return;
+		}
+
 		if (['jpg', 'png', 'tif'].indexOf(imageType(file.contents)) === -1) {
-			cb();
+			cb(null, file);
 			return;
 		}
 
@@ -32,7 +43,7 @@ module.exports = function (opts) {
 				}
 
 				file.contents = buf;
-				cb();
+				cb(null, file);
 			});
-	};
+	});
 };
