@@ -40,6 +40,6 @@
     "ava": "^0.0.4",
     "buffer-equal": "0.0.1",
     "is-webp": "^1.0.0",
-    "vinyl": "^0.4.3"
+    "vinyl-file": "^1.1.0"
   }
 }
