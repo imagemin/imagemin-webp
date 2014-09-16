@@ -35,6 +35,14 @@ module.exports = function (opts) {
 		var exec = new ExecBuffer();
 		var args = ['-quiet'];
 
+		if (opts.quality) {
+			args.push('-q', opts.quality);
+		}
+
+		if (opts.lossless) {
+			args.push('-lossless');
+		}
+
 		exec
 			.use(webp, args.concat([exec.src(), '-o', exec.dest()]))
 			.run(file.contents, function (err, buf) {

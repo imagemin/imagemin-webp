@@ -44,6 +44,23 @@ gulp.task('default', function () {
 ```
 
 
+## Options
+
+### quality
+
+Type: `Number`  
+Default: `100`
+
+Set quality factor between `0` and `100`.
+
+### lossless
+
+Type: `Boolean`  
+Default: `false`
+
+Encode images losslessly.
+
+
 ## License
 
 MIT © [imagemin](https://github.com/imagemin)
