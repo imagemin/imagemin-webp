@@ -2,6 +2,7 @@
 
 var ExecBuffer = require('exec-buffer');
 var imageType = require('image-type');
+var path = require('path');
 var through = require('through2');
 var webp = require('cwebp-bin').path;
 
@@ -40,6 +41,11 @@ module.exports = function (opts) {
 				if (err) {
 					cb(err);
 					return;
+				}
+
+				if (file.path && typeof file.path === 'string') {
+					var name = path.basename(file.path, path.extname(file.path)) + '.webp';
+					file.path = path.join(path.dirname(file.path), name);
 				}
 
 				file.contents = buf;
