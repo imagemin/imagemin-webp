@@ -34,6 +34,7 @@
     "cwebp-bin": "^1.0.0",
     "exec-buffer": "^1.0.0",
     "image-type": "^1.0.0",
+    "replace-ext": "0.0.1",
     "through2": "^0.6.1"
   },
   "devDependencies": {
