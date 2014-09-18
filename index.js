@@ -33,7 +33,7 @@ module.exports = function (opts) {
 		}
 
 		var exec = new ExecBuffer();
-		var args = ['-quiet'];
+		var args = ['-quiet', '-mt'];
 
 		if (opts.quality) {
 			args.push('-q', opts.quality);
