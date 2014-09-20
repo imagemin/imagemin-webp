@@ -20,6 +20,8 @@
   ],
   "keywords": [
     "compress",
+    "cwebp",
+    "gulpplugin",
     "image",
     "imageminplugin",
     "img",
