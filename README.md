@@ -26,7 +26,7 @@ imagemin.run(function (err, files) {
 		throw err;
 	}
 
-	console.log('Files optimized successfully!'); 
+	console.log('Files optimized successfully!');
 });
 ```
 
@@ -46,12 +46,66 @@ gulp.task('default', function () {
 
 ## Options
 
+### preset
+
+Type: `String`  
+Default: `default`
+
+Preset setting, one of `default`, `photo`, `picture`, `drawing`, `icon` and `text`.
+
 ### quality
+
+Type: `Number`  
+Default: `75`
+
+Set quality factor between `0` and `100`.
+
+### alphaQuality
 
 Type: `Number`  
 Default: `100`
 
-Set quality factor between `0` and `100`.
+Set transparency-compression quality between `0` and `100`.
+
+### method
+
+Type: `Number`  
+Default: `4`
+
+Specify the compression method to use, between `0` (fastest) and `6` (slowest). This parameter controls the trade off between encoding speed and the compressed file size and quality.
+
+### size
+
+Type: `Number`  
+
+Set target size in bytes.
+
+### sns
+
+Type: `Number`  
+Default: `80`
+
+Set the amplitude of spatial noise shaping between `0` and `100`.
+
+### filter
+
+Type: `Number`  
+
+Set deblocking filter strength between `0` (off) and `100`.
+
+### autoFilter
+
+Type: `Boolean`  
+Default: `false`  
+
+Adjust filter strength automatically.
+
+### sharpness
+
+Type: `Number`  
+Default: `0`
+
+Set filter sharpness between `0` (sharpest) and `7` (least sharp).
 
 ### lossless
 
