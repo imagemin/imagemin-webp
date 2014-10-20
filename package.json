@@ -33,7 +33,7 @@
     "webp"
   ],
   "dependencies": {
-    "cwebp-bin": "^1.0.0",
+    "cwebp-bin": "^2.0.0",
     "exec-buffer": "^1.0.0",
     "image-type": "^1.0.0",
     "replace-ext": "0.0.1",
@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "ava": "^0.0.4",
-    "buffer-equal": "0.0.1",
+    "buffer-equal": "^0.0.1",
     "is-webp": "^1.0.0",
     "vinyl": "^0.4.3",
     "vinyl-file": "^1.1.0"
