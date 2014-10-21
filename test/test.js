@@ -13,7 +13,7 @@ test('convert an image into a WEBP', function (t) {
 	t.plan(3);
 
 	read(path.join(__dirname, 'fixtures/test.png'), function (err, file) {
-		t.assert(!err);
+		t.assert(!err, err);
 
 		var stream = webp();
 		var size = file.contents.length;
@@ -34,7 +34,7 @@ test('convert an image into a WEBP using ctor', function (t) {
 	var WebP = webp.ctor();
 
 	read(path.join(__dirname, 'fixtures/test.png'), function (err, file) {
-		t.assert(!err);
+		t.assert(!err, err);
 
 		var stream = new WebP();
 		var size = file.contents.length;
@@ -53,7 +53,7 @@ test('keep file path undefined when a file doesn\'t have it', function (t) {
 	t.plan(2);
 
 	fs.readFile(path.join(__dirname, 'fixtures/test.png'), function (err, buf) {
-		t.assert(!err);
+		t.assert(!err, err);
 
 		var stream = webp();
 		var file = new File({ content: buf });
@@ -70,7 +70,7 @@ test('skip optimizing unsupported files', function (t) {
 	t.plan(2);
 
 	read(path.join(__dirname, 'fixtures/test-unsupported.bmp'), function (err, file) {
-		t.assert(!err);
+		t.assert(!err, err);
 
 		var stream = webp();
 		var contents = file.contents;
@@ -87,7 +87,7 @@ test('throw error when an image is corrupt', function (t) {
 	t.plan(3);
 
 	read(path.join(__dirname, 'fixtures/test-corrupt.jpg'), function (err, file) {
-		t.assert(!err);
+		t.assert(!err, err);
 
 		var stream = webp();
 
