@@ -28,6 +28,27 @@ test('convert an image into a WEBP', function (t) {
 	});
 });
 
+test('convert an image into a WEBP using ctor', function (t) {
+	t.plan(3);
+
+	var WebP = webp.ctor();
+
+	read(path.join(__dirname, 'fixtures/test.png'), function (err, file) {
+		t.assert(!err);
+
+		var stream = new WebP();
+		var size = file.contents.length;
+
+		stream.on('data', function (data) {
+			t.assert(data.contents.length < size);
+			t.assert(isWebP(data.contents));
+			t.assert(path.extname(data.path) === '.webp');
+		});
+
+		stream.end(file);
+	});
+});
+
 test('keep file path undefined when a file doesn\'t have it', function (t) {
 	t.plan(2);
 
