@@ -9,34 +9,13 @@ var read = require('vinyl-file').read;
 var test = require('ava');
 var webp = require('../');
 
-test('convert an image into a WEBP', function (t) {
+test('convert an image into a WebP', function (t) {
 	t.plan(3);
 
 	read(path.join(__dirname, 'fixtures/test.png'), function (err, file) {
 		t.assert(!err, err);
 
-		var stream = webp();
-		var size = file.contents.length;
-
-		stream.on('data', function (data) {
-			t.assert(data.contents.length < size);
-			t.assert(isWebP(data.contents));
-			t.assert(path.extname(data.path) === '.webp');
-		});
-
-		stream.end(file);
-	});
-});
-
-test('convert an image into a WEBP using ctor', function (t) {
-	t.plan(3);
-
-	var WebP = webp.ctor();
-
-	read(path.join(__dirname, 'fixtures/test.png'), function (err, file) {
-		t.assert(!err, err);
-
-		var stream = new WebP();
+		var stream = webp()();
 		var size = file.contents.length;
 
 		stream.on('data', function (data) {
@@ -55,7 +34,7 @@ test('keep file path undefined when a file doesn\'t have it', function (t) {
 	fs.readFile(path.join(__dirname, 'fixtures/test.png'), function (err, buf) {
 		t.assert(!err, err);
 
-		var stream = webp();
+		var stream = webp()();
 		var file = new File({ content: buf });
 
 		stream.on('data', function (data) {
@@ -72,7 +51,7 @@ test('skip optimizing unsupported files', function (t) {
 	read(path.join(__dirname, 'fixtures/test-unsupported.bmp'), function (err, file) {
 		t.assert(!err, err);
 
-		var stream = webp();
+		var stream = webp()();
 		var contents = file.contents;
 
 		stream.on('data', function (data) {
@@ -89,7 +68,7 @@ test('throw error when an image is corrupt', function (t) {
 	read(path.join(__dirname, 'fixtures/test-corrupt.jpg'), function (err, file) {
 		t.assert(!err, err);
 
-		var stream = webp();
+		var stream = webp()();
 
 		stream.on('error', function (err) {
 			t.assert(err);

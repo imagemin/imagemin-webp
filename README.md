@@ -38,7 +38,7 @@ var webp = require('imagemin-webp');
 
 gulp.task('default', function () {
 	return gulp.src('images/*.{jpg,png}')
-		.pipe(webp())
+		.pipe(webp()())
 		.pipe(gulp.dest('build/images'));
 });
 ```
