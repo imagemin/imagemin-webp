@@ -1,7 +1,7 @@
 'use strict';
 
 var ExecBuffer = require('exec-buffer');
-var imageType = require('image-type');
+var isCwebpReadable = require('is-cwebp-readable');
 var replaceExt = require('replace-ext');
 var through = require('through2');
 var webp = require('cwebp-bin').path;
@@ -27,7 +27,7 @@ module.exports = function (opts) {
 			return;
 		}
 
-		if (['jpg', 'png', 'tif'].indexOf(imageType(file.contents)) === -1) {
+		if (!isCwebpReadable(file.contents)) {
 			cb(null, file);
 			return;
 		}
