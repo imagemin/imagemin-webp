@@ -19,7 +19,7 @@ var webp = require('imagemin-webp');
 var imagemin = new Imagemin()
 	.src('images/*.{jpg,png}')
 	.dest('build/images')
-	.use(webp({ quality: 50 }));
+	.use(webp({quality: 50}));
 
 imagemin.run(function (err, files) {
 	if (err) {
@@ -38,7 +38,7 @@ var webp = require('imagemin-webp');
 
 gulp.task('default', function () {
 	return gulp.src('images/*.{jpg,png}')
-		.pipe(webp({ quality: 50 })())
+		.pipe(webp({quality: 50})())
 		.pipe(gulp.dest('build/images'));
 });
 ```

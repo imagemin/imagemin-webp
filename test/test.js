@@ -35,7 +35,7 @@ test('keep file path undefined when a file doesn\'t have it', function (t) {
 		t.assert(!err, err);
 
 		var stream = webp()();
-		var file = new File({ content: buf });
+		var file = new File({content: buf});
 
 		stream.on('data', function (data) {
 			t.assert(data.path === undefined);

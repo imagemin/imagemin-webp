@@ -6,17 +6,10 @@ var replaceExt = require('replace-ext');
 var through = require('through2');
 var webp = require('cwebp-bin').path;
 
-/**
- * webp imagemin plugin
- *
- * @param {Object} opts
- * @api public
- */
-
 module.exports = function (opts) {
 	opts = opts || {};
 
-	return through.ctor({ objectMode: true }, function (file, enc, cb) {
+	return through.ctor({objectMode: true}, function (file, enc, cb) {
 		if (file.isNull()) {
 			cb(null, file);
 			return;
@@ -32,7 +25,7 @@ module.exports = function (opts) {
 			return;
 		}
 
-		var exec = new ExecBuffer();
+		var execBuffer = new ExecBuffer();
 		var args = ['-quiet', '-mt'];
 
 		if (opts.preset) {
@@ -75,8 +68,8 @@ module.exports = function (opts) {
 			args.push('-lossless');
 		}
 
-		exec
-			.use(webp, args.concat([exec.src(), '-o', exec.dest()]))
+		execBuffer
+			.use(webp, args.concat([execBuffer.src(), '-o', execBuffer.dest()]))
 			.run(file.contents, function (err, buf) {
 				if (err) {
 					cb(err);
