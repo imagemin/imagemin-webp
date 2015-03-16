@@ -72,6 +72,7 @@ module.exports = function (opts) {
 			.use(webp, args.concat([execBuffer.src(), '-o', execBuffer.dest()]))
 			.run(file.contents, function (err, buf) {
 				if (err) {
+					err.fileName = file.path;
 					cb(err);
 					return;
 				}
