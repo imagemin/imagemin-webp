@@ -65,14 +65,14 @@ test('skip optimizing unsupported files', function (t) {
 test('throw error when an image is corrupt', function (t) {
 	t.plan(3);
 
-	read(path.join(__dirname, 'fixtures/test-corrupt.jpg'), function (err, file) {
+	read(path.join(__dirname, 'fixtures/test-corrupt.webp'), function (err, file) {
 		t.assert(!err, err);
 
 		var stream = webp()();
 
 		stream.on('error', function (err) {
 			t.assert(err);
-			t.assert(/Corrupt JPEG data/.test(err.message), err.message);
+			t.assert(/BITSTREAM_ERROR/.test(err.message), err.message);
 		});
 
 		stream.end(file);
