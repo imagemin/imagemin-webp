@@ -72,7 +72,7 @@ test('throw error when an image is corrupt', function (t) {
 
 		stream.on('error', function (err) {
 			t.assert(err);
-			t.assert(/Corrupt JPEG data/.test(err.message));
+			t.assert(/Corrupt JPEG data/.test(err.message), err.message);
 		});
 
 		stream.end(file);
