@@ -5,7 +5,7 @@
 
 ## Install
 
-```sh
+```
 $ npm install --save imagemin-webp
 ```
 
@@ -14,102 +14,97 @@ $ npm install --save imagemin-webp
 
 ```js
 var Imagemin = require('imagemin');
-var webp = require('imagemin-webp');
+var imageminWebp = require('imagemin-webp');
 
-var imagemin = new Imagemin()
+new Imagemin()
 	.src('images/*.{jpg,png}')
 	.dest('build/images')
-	.use(webp({quality: 50}));
-
-imagemin.run(function (err, files) {
-	if (err) {
-		throw err;
-	}
-
-	console.log('Files optimized successfully!');
-});
+	.use(imageminWebp({quality: 50}))
+	.run();
 ```
 
 You can also use this plugin with [gulp](http://gulpjs.com):
 
 ```js
 var gulp = require('gulp');
-var webp = require('imagemin-webp');
+var imageminWebp = require('imagemin-webp');
 
 gulp.task('default', function () {
 	return gulp.src('images/*.{jpg,png}')
-		.pipe(webp({quality: 50})())
+		.pipe(imageminWebp({quality: 50})())
 		.pipe(gulp.dest('build/images'));
 });
 ```
 
 
-## Options
+## API
 
-### preset
+### imageminWebp(options)
 
-Type: `String`  
+#### options.preset
+
+Type: `string`  
 Default: `default`
 
 Preset setting, one of `default`, `photo`, `picture`, `drawing`, `icon` and `text`.
 
-### quality
+#### options.quality
 
-Type: `Number`  
+Type: `number`  
 Default: `75`
 
 Set quality factor between `0` and `100`.
 
-### alphaQuality
+#### options.alphaQuality
 
-Type: `Number`  
+Type: `number`  
 Default: `100`
 
 Set transparency-compression quality between `0` and `100`.
 
-### method
+#### options.method
 
-Type: `Number`  
+Type: `number`  
 Default: `4`
 
 Specify the compression method to use, between `0` (fastest) and `6` (slowest). This parameter controls the trade off between encoding speed and the compressed file size and quality.
 
-### size
+#### options.size
 
-Type: `Number`  
+Type: `number`  
 
 Set target size in bytes.
 
-### sns
+#### options.sns
 
-Type: `Number`  
+Type: `number`  
 Default: `80`
 
 Set the amplitude of spatial noise shaping between `0` and `100`.
 
-### filter
+#### options.filter
 
-Type: `Number`  
+Type: `number`  
 
 Set deblocking filter strength between `0` (off) and `100`.
 
-### autoFilter
+#### options.autoFilter
 
-Type: `Boolean`  
+Type: `boolean`  
 Default: `false`  
 
 Adjust filter strength automatically.
 
-### sharpness
+#### options.sharpness
 
-Type: `Number`  
+Type: `number`  
 Default: `0`
 
 Set filter sharpness between `0` (sharpest) and `7` (least sharp).
 
-### lossless
+#### options.lossless
 
-Type: `Boolean`  
+Type: `boolean`  
 Default: `false`
 
 Encode images losslessly.
