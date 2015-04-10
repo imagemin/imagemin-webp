@@ -1,12 +1,10 @@
 'use strict';
 
-var fs = require('fs');
 var path = require('path');
 var bufferEqual = require('buffer-equal');
 var isWebP = require('is-webp');
 var read = require('vinyl-file').read;
 var test = require('ava');
-var Vinyl = require('vinyl');
 var imageminWebp = require('../');
 
 test('convert an image into a WebP', function (t) {
@@ -22,23 +20,6 @@ test('convert an image into a WebP', function (t) {
 			t.assert(data.contents.length < size, data.contents.length);
 			t.assert(isWebP(data.contents));
 			t.assert(path.extname(data.path) === '.webp', path.extname(data.path));
-		});
-
-		stream.end(file);
-	});
-});
-
-test('keep file path undefined when a file doesn\'t have it', function (t) {
-	t.plan(2);
-
-	fs.readFile(path.join(__dirname, 'fixtures/test.png'), function (err, buf) {
-		t.assert(!err, err);
-
-		var stream = imageminWebp()();
-		var file = new Vinyl({contents: buf});
-
-		stream.on('data', function (data) {
-			t.assert(data.path === undefined, data.path);
 		});
 
 		stream.end(file);
