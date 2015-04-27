@@ -4,7 +4,7 @@ var ExecBuffer = require('exec-buffer');
 var isCwebpReadable = require('is-cwebp-readable');
 var replaceExt = require('replace-ext');
 var through = require('through2');
-var webp = require('cwebp-bin').path;
+var webp = require('cwebp-bin');
 
 module.exports = function (opts) {
 	opts = opts || {};
