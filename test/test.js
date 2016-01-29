@@ -8,7 +8,7 @@ var test = require('ava');
 var imageminWebp = require('../');
 
 test('convert an image into a WebP', function (t) {
-	t.plan(3);
+	t.plan(4);
 
 	read(path.join(__dirname, 'fixtures/test.png'), function (err, file) {
 		t.assert(!err, err);
@@ -20,6 +20,26 @@ test('convert an image into a WebP', function (t) {
 			t.assert(data.contents.length < size, data.contents.length);
 			t.assert(isWebP(data.contents));
 			t.assert(path.extname(data.path) === '.webp', path.extname(data.path));
+		});
+
+		stream.end(file);
+	});
+});
+
+
+test('convert an image into a WebP and append ext', function (t) {
+	t.plan(4);
+
+	read(path.join(__dirname, 'fixtures/test.png'), function (err, file) {
+		t.assert(!err, err);
+
+		var stream = imageminWebp({appendExtension: true})();
+		var size = file.contents.length;
+
+		stream.on('data', function (data) {
+			t.assert(data.contents.length < size, data.contents.length);
+			t.assert(isWebP(data.contents));
+			t.assert(path.basename(data.path) === 'test.png.webp', path.basename(data.path));
 		});
 
 		stream.end(file);
