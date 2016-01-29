@@ -109,6 +109,13 @@ Default: `false`
 
 Encode images losslessly.
 
+#### options.appendExtension
+
+Type: `boolean`
+Default: `false`
+
+If true append the `.webp` extension instead of replacing it to the original one.
+
 
 ## License
 

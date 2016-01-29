@@ -77,7 +77,11 @@ module.exports = function (opts) {
 					return;
 				}
 
-				file.path = replaceExt(file.path, '.webp');
+				if (opts.appendExtension) {
+					file.path += '.webp';
+				} else {
+					file.path = replaceExt(file.path, '.webp');
+				}
 				file.contents = buf;
 				cb(null, file);
 			});
