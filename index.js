@@ -1,10 +1,10 @@
 'use strict';
 
-var ExecBuffer = require('exec-buffer');
+var spawn = require('child_process').spawn;
 var isCwebpReadable = require('is-cwebp-readable');
 var replaceExt = require('replace-ext');
 var through = require('through2');
-var webp = require('cwebp-bin');
+var cwebp = require('cwebp-bin');
 
 module.exports = function (opts) {
 	opts = opts || {};
@@ -25,8 +25,10 @@ module.exports = function (opts) {
 			return;
 		}
 
-		var execBuffer = new ExecBuffer();
 		var args = ['-quiet', '-mt'];
+		var err = '';
+		var ret = [];
+		var len = 0;
 
 		if (opts.preset) {
 			args.push('-preset', opts.preset);
@@ -68,18 +70,44 @@ module.exports = function (opts) {
 			args.push('-lossless');
 		}
 
-		execBuffer
-			.use(webp, args.concat([execBuffer.src(), '-o', execBuffer.dest()]))
-			.run(file.contents, function (err, buf) {
-				if (err) {
-					err.fileName = file.path;
-					cb(err);
-					return;
-				}
+		var cp = spawn(cwebp, args.concat(['-o', '-', '--', '-']));
 
-				file.path = replaceExt(file.path, '.webp');
-				file.contents = buf;
-				cb(null, file);
-			});
+		cp.stderr.setEncoding('utf8');
+		cp.stderr.on('data', function (data) {
+			err += data;
+		});
+
+		cp.stdout.on('data', function (data) {
+			ret.push(data);
+			len += data.length;
+		});
+
+		cp.on('error', function (err) {
+			err.fileName = file.path;
+			cb(err);
+			return;
+		});
+
+		cp.on('close', function (code) {
+			if (code) {
+				err = new Error(err);
+				err.fileName = file.path;
+				cb(err);
+				return;
+			}
+
+			file.contents = Buffer.concat(ret, len);
+			file.path = replaceExt(file.path, '.webp');
+
+			cb(null, file);
+		});
+
+		cp.stdin.on('error', function (stdinErr) {
+			if (!err) {
+				err = stdinErr;
+			}
+		});
+
+		cp.stdin.end(file.contents);
 	});
 };
