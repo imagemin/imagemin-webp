@@ -33,9 +33,9 @@
     "webp"
   ],
   "dependencies": {
-    "cwebp-bin": "^3.0.0",
+    "cwebp-bin": "^3.1.0",
     "is-cwebp-readable": "^1.0.0",
-    "replace-ext": "0.0.1",
+    "replace-ext": "^0.0.1",
     "through2": "^2.0.0"
   },
   "devDependencies": {
