@@ -21,7 +21,7 @@
     }
   ],
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
     "test": "xo && node test/test.js"
@@ -32,7 +32,6 @@
   "keywords": [
     "compress",
     "cwebp",
-    "gulpplugin",
     "image",
     "imageminplugin",
     "img",
@@ -45,16 +44,16 @@
   ],
   "dependencies": {
     "cwebp-bin": "^3.1.0",
-    "is-cwebp-readable": "^1.0.0",
-    "replace-ext": "^0.0.1",
-    "through2": "^2.0.0"
+    "exec-buffer": "^3.0.0",
+    "is-cwebp-readable": "^1.0.0"
   },
   "devDependencies": {
     "ava": "^0.0.4",
     "buffer-equal": "^0.0.1",
     "is-webp": "^1.0.0",
-    "vinyl": "^0.5.0",
-    "vinyl-file": "^1.1.0",
     "xo": "*"
+  },
+  "xo": {
+    "esnext": true
   }
 }
