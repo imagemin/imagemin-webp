@@ -107,6 +107,18 @@ Default: `100`
 
 Encode images losslessly with [an additional lossy pre-processing step](https://groups.google.com/a/webmproject.org/forum/#!msg/webp-discuss/0GmxDmlexek/3ggyYsaYdFEJ), with a quality factor between `0` (maximum pre-processing) and `100` (same as `lossless`).
 
+##### crop
+
+Type: `object { x, y, w, h: nubmer }`<br>
+
+Crop the output picture.
+
+##### resize
+
+Type: `object { w, h: nubmer }`<br>
+
+Resize the output picture (happens after crop if crop is also given).
+
 #### buffer
 
 Type: `buffer`
