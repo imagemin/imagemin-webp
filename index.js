@@ -59,6 +59,10 @@ module.exports = opts => buf => {
 		args.push('-lossless');
 	}
 
+	if (opts.nearLossless) {
+		args.push('-near_lossless', opts.nearLossless);
+	}
+
 	args.push('-o', execBuffer.output, execBuffer.input);
 
 	return execBuffer({

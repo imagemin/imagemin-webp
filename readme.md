@@ -100,6 +100,13 @@ Default: `false`
 
 Encode images losslessly.
 
+##### nearLossless
+
+Type: `number`<br>
+Default: `100`
+
+Encode images losslessly with [an additional lossy pre-processing step](https://groups.google.com/a/webmproject.org/forum/#!msg/webp-discuss/0GmxDmlexek/3ggyYsaYdFEJ), with a quality factor between `0` (maximum pre-processing) and `100` (same as `lossless`).
+
 #### buffer
 
 Type: `buffer`
