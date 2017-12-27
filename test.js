@@ -3,7 +3,7 @@ import path from 'path';
 import isWebP from 'is-webp';
 import pify from 'pify';
 import test from 'ava';
-import m from './';
+import m from '.';
 
 const fsP = pify(fs);
 

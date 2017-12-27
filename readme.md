@@ -1,12 +1,12 @@
 # imagemin-webp [![Build Status](https://travis-ci.org/imagemin/imagemin-webp.svg?branch=master)](https://travis-ci.org/imagemin/imagemin-webp) [![Build status](https://ci.appveyor.com/api/projects/status/erd3nf73djfm4gjp?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/imagemin-webp)
 
-> WebP imagemin plugin
+> WebP [imagemin](https://github.com/imagemin/imagemin) plugin
 
 
 ## Install
 
 ```
-$ npm install --save imagemin-webp
+$ npm install imagemin-webp
 ```
 
 
@@ -17,11 +17,11 @@ const imagemin = require('imagemin');
 const imageminWebp = require('imagemin-webp');
 
 imagemin(['images/*.{jpg,png}'], 'build/images', {
-    use: [
-        imageminWebp({quality: 50})
-    ]
+	use: [
+		imageminWebp({quality: 50})
+	]
 }).then(() => {
-    console.log('Images optimized');
+	console.log('Images optimized');
 });
 ```
 
@@ -31,6 +31,8 @@ imagemin(['images/*.{jpg,png}'], 'build/images', {
 ### imageminWebp([options])(buffer)
 
 #### options
+
+Type: `Object`
 
 ##### preset
 
@@ -121,11 +123,11 @@ Resize the image. Happens after `crop`.
 
 #### buffer
 
-Type: `buffer`
+Type: `Buffer`
 
 Buffer to optimize.
 
 
 ## License
 
-MIT © [imagemin](https://github.com/imagemin)
+MIT © [Imagemin](https://github.com/imagemin)
