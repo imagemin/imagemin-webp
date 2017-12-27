@@ -109,15 +109,15 @@ Encode images losslessly with [an additional lossy pre-processing step](https://
 
 ##### crop
 
-Type: `object { x, y, w, h: nubmer }`<br>
+Type: `Object { x: number, y: number, width: number, height: number }`<br>
 
-Crop the output picture.
+Crop the image.
 
 ##### resize
 
-Type: `object { w, h: nubmer }`<br>
+Type: `Object { width: number, height: number }`<br>
 
-Resize the output picture (happens after crop if crop is also given).
+Resize the image. Happens after `crop`.
 
 #### buffer
 
