@@ -64,11 +64,11 @@ module.exports = opts => buf => {
 	}
 
 	if (opts.crop) {
-		args.push('-crop', opts.crop.x, opts.crop.y, opts.crop.w, opts.crop.h);
+		args.push('-crop', opts.crop.x, opts.crop.y, opts.crop.width, opts.crop.height);
 	}
 
 	if (opts.resize) {
-		args.push('-resize', opts.resize.w, opts.resize.h);
+		args.push('-resize', opts.resize.width, opts.resize.height);
 	}
 
 	args.push('-o', execBuffer.output, execBuffer.input);
