@@ -43,14 +43,14 @@
     "webp"
   ],
   "dependencies": {
-    "cwebp-bin": "^3.1.0",
+    "cwebp-bin": "^4.0.0",
     "exec-buffer": "^3.0.0",
-    "is-cwebp-readable": "^1.0.0"
+    "is-cwebp-readable": "^2.0.1"
   },
   "devDependencies": {
     "ava": "*",
     "is-webp": "^1.0.0",
-    "pify": "^2.3.0",
+    "pify": "^3.0.0",
     "xo": "*"
   },
   "xo": {

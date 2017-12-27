@@ -24,5 +24,5 @@ test('skip optimizing unsupported files', async t => {
 
 test('throw error when an image is corrupt', async t => {
 	const buf = await fsP.readFile(path.join(__dirname, 'fixtures/test-corrupt.webp'));
-	t.throws(m()(buf), /BITSTREAM_ERROR/);
+	await t.throws(m()(buf), /BITSTREAM_ERROR/);
 });
