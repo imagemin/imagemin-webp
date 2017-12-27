@@ -59,6 +59,18 @@ module.exports = opts => buf => {
 		args.push('-lossless');
 	}
 
+	if (opts.nearLossless) {
+		args.push('-near_lossless', opts.nearLossless);
+	}
+
+	if (opts.crop) {
+		args.push('-crop', opts.crop.x, opts.crop.y, opts.crop.width, opts.crop.height);
+	}
+
+	if (opts.resize) {
+		args.push('-resize', opts.resize.width, opts.resize.height);
+	}
+
 	args.push('-o', execBuffer.output, execBuffer.input);
 
 	return execBuffer({

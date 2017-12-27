@@ -100,6 +100,25 @@ Default: `false`
 
 Encode images losslessly.
 
+##### nearLossless
+
+Type: `number`<br>
+Default: `100`
+
+Encode losslessly with an additional [lossy pre-processing step](https://groups.google.com/a/webmproject.org/forum/#!msg/webp-discuss/0GmxDmlexek/3ggyYsaYdFEJ), with a quality factor between `0` (maximum pre-processing) and `100` (same as `lossless`).
+
+##### crop
+
+Type: `Object { x: number, y: number, width: number, height: number }`
+
+Crop the image.
+
+##### resize
+
+Type: `Object { width: number, height: number }`
+
+Resize the image. Happens after `crop`.
+
 #### buffer
 
 Type: `buffer`
