@@ -1,4 +1,4 @@
-# imagemin-webp [![Build Status](https://travis-ci.org/imagemin/imagemin-webp.svg?branch=master)](https://travis-ci.org/imagemin/imagemin-webp) [![Build status](https://ci.appveyor.com/api/projects/status/erd3nf73djfm4gjp?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/imagemin-webp)
+# imagemin-webp [![Build Status](https://travis-ci.org/imagemin/imagemin-webp.svg?branch=master)](https://travis-ci.org/imagemin/imagemin-webp)
 
 > WebP [imagemin](https://github.com/imagemin/imagemin) plugin
 
