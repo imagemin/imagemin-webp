@@ -71,6 +71,10 @@ module.exports = opts => buf => {
 		args.push('-resize', opts.resize.width, opts.resize.height);
 	}
 
+	if (opts.metadata) {
+		args.push('-metadata', Array.isArray(opts.metadata) ? opts.metadata.join(',') : opts.metadata);
+	}
+
 	args.push('-o', execBuffer.output, execBuffer.input);
 
 	return execBuffer({

@@ -121,6 +121,14 @@ Type: `Object { width: number, height: number }`
 
 Resize the image. Happens after `crop`.
 
+##### metadata
+
+Type: `string | string[]`<br>
+Default: `none`<br>
+Values: `all` `none` `exif` `icc` `xmp`
+
+A list of metadata to copy from the input to the output if present.
+
 #### buffer
 
 Type: `Buffer`
