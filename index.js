@@ -3,15 +3,13 @@ const execBuffer = require('exec-buffer');
 const isCwebpReadable = require('is-cwebp-readable');
 const cwebp = require('cwebp-bin');
 
-module.exports = opts => buf => {
-	opts = Object.assign({}, opts);
-
-	if (!Buffer.isBuffer(buf)) {
-		return Promise.reject(new TypeError('Expected a buffer'));
+module.exports = (options = {}) => input => {
+	if (!Buffer.isBuffer(input)) {
+		return Promise.reject(new TypeError(`Expected \`input\` to be of type \`Buffer\` but received type \`${typeof input}\``));
 	}
 
-	if (!isCwebpReadable(buf)) {
-		return Promise.resolve(buf);
+	if (!isCwebpReadable(input)) {
+		return Promise.resolve(input);
 	}
 
 	const args = [
@@ -19,68 +17,68 @@ module.exports = opts => buf => {
 		'-mt'
 	];
 
-	if (opts.preset) {
-		args.push('-preset', opts.preset);
+	if (options.preset) {
+		args.push('-preset', options.preset);
 	}
 
-	if (opts.quality) {
-		args.push('-q', opts.quality);
+	if (options.quality) {
+		args.push('-q', options.quality);
 	}
 
-	if (opts.alphaQuality) {
-		args.push('-alpha_q', opts.alphaQuality);
+	if (options.alphaQuality) {
+		args.push('-alpha_q', options.alphaQuality);
 	}
 
-	if (opts.method) {
-		args.push('-m', opts.method);
+	if (options.method) {
+		args.push('-m', options.method);
 	}
 
-	if (opts.size) {
-		args.push('-size', opts.size);
+	if (options.size) {
+		args.push('-size', options.size);
 	}
 
-	if (opts.sns) {
-		args.push('-sns', opts.sns);
+	if (options.sns) {
+		args.push('-sns', options.sns);
 	}
 
-	if (opts.filter) {
-		args.push('-f', opts.filter);
+	if (options.filter) {
+		args.push('-f', options.filter);
 	}
 
-	if (opts.autoFilter) {
+	if (options.autoFilter) {
 		args.push('-af');
 	}
 
-	if (opts.sharpness) {
-		args.push('-sharpness', opts.sharpness);
+	if (options.sharpness) {
+		args.push('-sharpness', options.sharpness);
 	}
 
-	if (opts.lossless) {
+	if (options.lossless) {
 		args.push('-lossless');
 	}
 
-	if (opts.nearLossless) {
-		args.push('-near_lossless', opts.nearLossless);
+	if (options.nearLossless) {
+		args.push('-near_lossless', options.nearLossless);
 	}
 
-	if (opts.crop) {
-		args.push('-crop', opts.crop.x, opts.crop.y, opts.crop.width, opts.crop.height);
+	if (options.crop) {
+		args.push('-crop', options.crop.x, options.crop.y, options.crop.width, options.crop.height);
 	}
 
-	if (opts.resize) {
-		args.push('-resize', opts.resize.width, opts.resize.height);
+	if (options.resize) {
+		args.push('-resize', options.resize.width, options.resize.height);
 	}
 
-	if (opts.metadata) {
-		args.push('-metadata', Array.isArray(opts.metadata) ? opts.metadata.join(',') : opts.metadata);
+	if (options.metadata) {
+		args.push('-metadata', Array.isArray(options.metadata) ? options.metadata.join(',') : options.metadata);
 	}
 
 	args.push('-o', execBuffer.output, execBuffer.input);
 
 	return execBuffer({
-		input: buf,
+		args,
 		bin: cwebp,
-		args
+		input
 	}).catch(error => {
 		error.message = error.stderr || error.message;
 		throw error;

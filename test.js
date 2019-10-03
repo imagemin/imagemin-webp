@@ -3,13 +3,13 @@ import path from 'path';
 import isWebP from 'is-webp';
 import pify from 'pify';
 import test from 'ava';
-import m from '.';
+import imageminWebp from '.';
 
 const fsP = pify(fs);
 
 test('convert an image into a WebP', async t => {
 	const buf = await fsP.readFile(path.join(__dirname, 'fixtures/test.png'));
-	const data = await m()(buf);
+	const data = await imageminWebp()(buf);
 
 	t.true(data.length < buf.length);
 	t.true(isWebP(data));
@@ -17,12 +17,12 @@ test('convert an image into a WebP', async t => {
 
 test('skip optimizing unsupported files', async t => {
 	const buf = await fsP.readFile(path.join(__dirname, 'fixtures/test-unsupported.bmp'));
-	const data = await m()(buf);
+	const data = await imageminWebp()(buf);
 
 	t.deepEqual(data, buf);
 });
 
 test('throw error when an image is corrupt', async t => {
 	const buf = await fsP.readFile(path.join(__dirname, 'fixtures/test-corrupt.webp'));
-	await t.throws(m()(buf), /BITSTREAM_ERROR/);
+	await t.throws(imageminWebp()(buf), /BITSTREAM_ERROR/);
 });

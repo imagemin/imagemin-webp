@@ -16,23 +16,27 @@ $ npm install imagemin-webp
 const imagemin = require('imagemin');
 const imageminWebp = require('imagemin-webp');
 
-imagemin(['images/*.{jpg,png}'], 'build/images', {
-	use: [
-		imageminWebp({quality: 50})
-	]
-}).then(() => {
+(async () => {
+	await imagemin(['images/*.{jpg,png}'], 'build/images', {
+		use: [
+			imageminWebp({quality: 50})
+		]
+	});
+
 	console.log('Images optimized');
-});
+})();
 ```
 
 
 ## API
 
-### imageminWebp([options])(buffer)
+### imageminWebp(options?)(buffer)
+
+Returns a `Promise<Buffer>` with the optimized image.
 
 #### options
 
-Type: `Object`
+Type: `object`
 
 ##### preset
 
@@ -111,13 +115,13 @@ Encode losslessly with an additional [lossy pre-processing step](https://groups.
 
 ##### crop
 
-Type: `Object { x: number, y: number, width: number, height: number }`
+Type: `object { x: number, y: number, width: number, height: number }`
 
 Crop the image.
 
 ##### resize
 
-Type: `Object { width: number, height: number }`
+Type: `object { width: number, height: number }`
 
 Resize the image. Happens after `crop`.
 
@@ -134,8 +138,3 @@ A list of metadata to copy from the input to the output if present.
 Type: `Buffer`
 
 Buffer to optimize.
-
-
-## License
-
-MIT © [Imagemin](https://github.com/imagemin)
