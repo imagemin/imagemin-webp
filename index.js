@@ -54,7 +54,11 @@ const imageminWebp = (options = {}) => input => {
 	}
 
 	if (options.lossless) {
-		args.push('-lossless');
+		if (typeof options.lossless === 'number') {
+			args.push('-z', options.lossless);
+		} else {
+			args.push('-lossless');
+		}
 	}
 
 	if (options.nearLossless) {
