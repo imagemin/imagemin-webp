@@ -1,9 +1,9 @@
-import fs from 'fs';
-import path from 'path';
-import isWebP from 'is-webp';
-import pify from 'pify';
-import test from 'ava';
-import imageminWebp from '.';
+const fs = require('fs');
+const path = require('path');
+const isWebP = require('is-webp');
+const pify = require('pify');
+const test = require('ava');
+const imageminWebp = require('.');
 
 const fsP = pify(fs);
 
@@ -24,5 +24,5 @@ test('skip optimizing unsupported files', async t => {
 
 test('throw error when an image is corrupt', async t => {
 	const buf = await fsP.readFile(path.join(__dirname, 'fixtures/test-corrupt.webp'));
-	await t.throws(imageminWebp()(buf), /BITSTREAM_ERROR/);
+	await t.throwsAsync(() => imageminWebp()(buf), {message: /BITSTREAM_ERROR/});
 });
