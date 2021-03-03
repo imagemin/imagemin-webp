@@ -1,4 +1,4 @@
-# imagemin-webp [![Build Status](https://travis-ci.org/imagemin/imagemin-webp.svg?branch=master)](https://travis-ci.org/imagemin/imagemin-webp)
+# imagemin-webp ![GitHub Actions Status](https://github.com/imagemin/imagemin-webp/workflows/test/badge.svg?branch=master)
 
 > WebP [imagemin](https://github.com/imagemin/imagemin) plugin
 
