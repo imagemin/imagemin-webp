@@ -2,6 +2,7 @@
 const execBuffer = require('exec-buffer');
 const isCwebpReadable = require('is-cwebp-readable');
 const cwebp = require('cwebp-bin');
+const isNumber = require('is-number');
 
 module.exports = (options = {}) => input => {
 	if (!Buffer.isBuffer(input)) {
@@ -54,7 +55,11 @@ module.exports = (options = {}) => input => {
 	}
 
 	if (options.lossless) {
-		args.push('-lossless');
+		if (isNumber(options.lossless)) {
+			args.push('-z', options.lossless);
+		} else {
+			args.push('-lossless');
+		}
 	}
 
 	if (options.nearLossless) {
