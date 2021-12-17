@@ -4,6 +4,8 @@
 	"description": "WebP imagemin plugin",
 	"license": "MIT",
 	"repository": "imagemin/imagemin-webp",
+	"type": "module",
+	"exports": "./index.js",
 	"author": {
 		"name": "Kevin Mårtensson",
 		"email": "kevinmartensson@gmail.com",
@@ -17,7 +19,7 @@
 		}
 	],
 	"engines": {
-		"node": ">=10"
+		"node": "^12.20.0 || ^14.13.1 || >=16.0.0"
 	},
 	"scripts": {
 		"test": "xo && ava"
@@ -39,13 +41,13 @@
 		"webp"
 	],
 	"dependencies": {
-		"cwebp-bin": "^6.0.0",
-		"exec-buffer": "^3.0.0",
+		"cwebp-bin": "^7.0.1",
+		"exec-buffer": "^3.2.0",
 		"is-cwebp-readable": "^3.0.0"
 	},
 	"devDependencies": {
 		"ava": "^3.8.0",
-		"is-webp": "^1.0.0",
-		"xo": "^0.30.0"
+		"is-webp": "^2.0.0",
+		"xo": "^0.47.0"
 	}
 }
