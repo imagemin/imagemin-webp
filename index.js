@@ -1,9 +1,9 @@
-'use strict';
-const execBuffer = require('exec-buffer');
-const isCwebpReadable = require('is-cwebp-readable');
-const cwebp = require('cwebp-bin');
+import {Buffer} from 'node:buffer';
+import execBuffer from 'exec-buffer';
+import isCwebpReadable from 'is-cwebp-readable';
+import cwebp from 'cwebp-bin';
 
-module.exports = (options = {}) => input => {
+const imageminWebp = (options = {}) => input => {
 	if (!Buffer.isBuffer(input)) {
 		return Promise.reject(new TypeError(`Expected \`input\` to be of type \`Buffer\` but received type \`${typeof input}\``));
 	}
@@ -14,7 +14,7 @@ module.exports = (options = {}) => input => {
 
 	const args = [
 		'-quiet',
-		'-mt'
+		'-mt',
 	];
 
 	if (options.preset) {
@@ -33,7 +33,7 @@ module.exports = (options = {}) => input => {
 		args.push('-m', options.method);
 	}
 
-	if (options.size) {
+	if (options.size > 0) {
 		args.push('-size', options.size);
 	}
 
@@ -78,9 +78,11 @@ module.exports = (options = {}) => input => {
 	return execBuffer({
 		args,
 		bin: cwebp,
-		input
+		input,
 	}).catch(error => {
 		error.message = error.stderr || error.message;
 		throw error;
 	});
 };
+
+export default imageminWebp;

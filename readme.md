@@ -1,4 +1,4 @@
-# imagemin-webp ![GitHub Actions Status](https://github.com/imagemin/imagemin-webp/workflows/test/badge.svg?branch=master)
+# imagemin-webp ![GitHub Actions Status](https://github.com/imagemin/imagemin-webp/workflows/test/badge.svg?branch=main)
 
 > WebP [imagemin](https://github.com/imagemin/imagemin) plugin
 
@@ -13,8 +13,8 @@ $ npm install imagemin-webp
 ## Usage
 
 ```js
-const imagemin = require('imagemin');
-const imageminWebp = require('imagemin-webp');
+import imagemin from 'imagemin';
+import imageminWebp from 'imagemin-webp';
 
 (async () => {
 	await imagemin(['images/*.{jpg,png}'], {
