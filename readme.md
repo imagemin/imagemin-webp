@@ -76,7 +76,7 @@ Set target size in bytes.
 ##### sns
 
 Type: `number`<br>
-Default: `80`
+Default: `50`
 
 Set the amplitude of spatial noise shaping between `0` and `100`.
 
