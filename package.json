@@ -19,7 +19,7 @@
 		}
 	],
 	"engines": {
-		"node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+		"node": "^14.13.1 || >=16.0.0"
 	},
 	"scripts": {
 		"test": "xo && ava"
@@ -41,7 +41,7 @@
 		"webp"
 	],
 	"dependencies": {
-		"cwebp-bin": "^7.0.1",
+		"cwebp-bin": "^8.0.0",
 		"exec-buffer": "^3.2.0",
 		"is-cwebp-readable": "^3.0.0"
 	},
