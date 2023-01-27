@@ -6,20 +6,8 @@
 	"repository": "imagemin/imagemin-webp",
 	"type": "module",
 	"exports": "./index.js",
-	"author": {
-		"name": "Kevin Mårtensson",
-		"email": "kevinmartensson@gmail.com",
-		"url": "github.com/kevva"
-	},
-	"maintainers": [
-		{
-			"name": "Sindre Sorhus",
-			"email": "sindresorhus@gmail.com",
-			"url": "sindresorhus.com"
-		}
-	],
 	"engines": {
-		"node": "^14.13.1 || >=16.0.0"
+		"node": ">=14.16"
 	},
 	"scripts": {
 		"test": "xo && ava"
@@ -46,8 +34,8 @@
 		"is-cwebp-readable": "^3.0.0"
 	},
 	"devDependencies": {
-		"ava": "^3.8.0",
+		"ava": "^5.1.1",
 		"is-webp": "^2.0.0",
-		"xo": "^0.47.0"
+		"xo": "^0.53.1"
 	}
 }

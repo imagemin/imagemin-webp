@@ -2,13 +2,11 @@
 
 > WebP [imagemin](https://github.com/imagemin/imagemin) plugin
 
-
 ## Install
 
+```sh
+npm install imagemin-webp
 ```
-$ npm install imagemin-webp
-```
-
 
 ## Usage
 
@@ -16,18 +14,15 @@ $ npm install imagemin-webp
 import imagemin from 'imagemin';
 import imageminWebp from 'imagemin-webp';
 
-(async () => {
-	await imagemin(['images/*.{jpg,png}'], {
-		destination: 'build/images',
-		plugins: [
-			imageminWebp({quality: 50})
-		]
-	});
+await imagemin(['images/*.{jpg,png}'], {
+	destination: 'build/images',
+	plugins: [
+		imageminWebp({quality: 50})
+	]
+});
 
-	console.log('Images optimized');
-})();
+console.log('Images optimized');
 ```
-
 
 ## API
 
@@ -41,75 +36,75 @@ Type: `object`
 
 ##### preset
 
-Type: `string`<br>
+Type: `string`\
 Default: `default`
 
 Preset setting, one of `default`, `photo`, `picture`, `drawing`, `icon` and `text`.
 
 ##### quality
 
-Type: `number`<br>
+Type: `number`\
 Default: `75`
 
 Set quality factor between `0` and `100`.
 
 ##### alphaQuality
 
-Type: `number`<br>
+Type: `number`\
 Default: `100`
 
 Set transparency-compression quality between `0` and `100`.
 
 ##### method
 
-Type: `number`<br>
+Type: `number`\
 Default: `4`
 
 Specify the compression method to use, between `0` (fastest) and `6` (slowest). This parameter controls the trade off between encoding speed and the compressed file size and quality.
 
 ##### size
 
-Type: `number`<br>
+Type: `number`
 
 Set target size in bytes.
 
 ##### sns
 
-Type: `number`<br>
+Type: `number`\
 Default: `50`
 
 Set the amplitude of spatial noise shaping between `0` and `100`.
 
 ##### filter
 
-Type: `number`<br>
+Type: `number`
 
 Set deblocking filter strength between `0` (off) and `100`.
 
 ##### autoFilter
 
-Type: `boolean`<br>
-Default: `false`<br>
+Type: `boolean`\
+Default: `false`
 
 Adjust filter strength automatically.
 
 ##### sharpness
 
-Type: `number`<br>
+Type: `number`\
 Default: `0`
 
 Set filter sharpness between `0` (sharpest) and `7` (least sharp).
 
 ##### lossless
 
-Type: `boolean | number`<br>
+Type: `boolean | number`\
 Default: `false`
 
 Encode images losslessly. If set to a number, activates lossless preset with given level between `0` (fastest, larger files) and `9` (slowest, smaller files).
 
 ##### nearLossless
 
-Type: `number`<br>
+Type: `number`\
 Default: `100`
 
 Encode losslessly with an additional [lossy pre-processing step](https://groups.google.com/a/webmproject.org/forum/#!msg/webp-discuss/0GmxDmlexek/3ggyYsaYdFEJ), with a quality factor between `0` (maximum pre-processing) and `100` (same as `lossless`).
@@ -128,8 +123,8 @@ Resize the image. Happens after `crop`.
 
 ##### metadata
 
-Type: `string | string[]`<br>
-Default: `none`<br>
+Type: `string | string[]`\
+Default: `none`\
 Values: `all` `none` `exif` `icc` `xmp`
 
 A list of metadata to copy from the input to the output if present.

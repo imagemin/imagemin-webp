@@ -1,4 +1,4 @@
-import {promises as fs} from 'node:fs';
+import fs from 'node:fs/promises';
 import isWebP from 'is-webp';
 import test from 'ava';
 import imageminWebp from './index.js';
