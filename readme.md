@@ -102,10 +102,10 @@ Set filter sharpness between `0` (sharpest) and `7` (least sharp).
 
 ##### lossless
 
-Type: `boolean`<br>
+Type: `boolean | number`<br>
 Default: `false`
 
-Encode images losslessly.
+Encode images losslessly. If set to a number, activates lossless preset with given level between `0` (fastest, larger files) and `9` (slowest, smaller files).
 
 ##### nearLossless
 
