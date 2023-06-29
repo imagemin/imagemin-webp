@@ -10,10 +10,12 @@
 		"node": ">=14.16"
 	},
 	"scripts": {
-		"test": "xo && ava"
+		"test": "xo && ava && tsd"
 	},
+	"types": "./index.d.ts",
 	"files": [
-		"index.js"
+		"index.js",
+		"index.d.ts"
 	],
 	"keywords": [
 		"compress",
@@ -34,8 +36,10 @@
 		"is-cwebp-readable": "^3.0.0"
 	},
 	"devDependencies": {
+		"@types/node": "^20.3.2",
 		"ava": "^5.1.1",
 		"is-webp": "^2.0.0",
+		"tsd": "^0.28.1",
 		"xo": "^0.53.1"
 	}
 }
