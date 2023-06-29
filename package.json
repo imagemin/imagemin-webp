@@ -12,6 +12,7 @@
 	"scripts": {
 		"test": "xo && ava"
 	},
+	"types": "./index.d.ts",
 	"files": [
 		"index.js"
 	],
