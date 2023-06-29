@@ -137,4 +137,4 @@ export type Plugin = (input: Buffer | NodeJS.ReadableStream) => Promise<Buffer>;
  * @param options
  * @returns An imagemin plugin
  */
-export default function imageminWebp(options: Options): Plugin;
+export default function imageminWebp(options?: Options): Plugin;
