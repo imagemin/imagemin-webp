@@ -35,6 +35,7 @@
 		"is-cwebp-readable": "^3.0.0"
 	},
 	"devDependencies": {
+		"@types/node": "^20.3.2",
 		"ava": "^5.1.1",
 		"is-webp": "^2.0.0",
 		"tsd": "^0.28.1",
